@@ -38,14 +38,14 @@ def update(attr,old,new):
     
     #update div
     if (dffilt['cc1']>0).any():
-        cc1_crop = 'Calibration criteria 1 met'
+        cc1_crop = 'Myopic elasticity calibration criteria met'
     else:
-        cc1_crop = 'Calibration criteria 1 not met'
+        cc1_crop = 'Myopic elasticity calibration criteria not met'
     
     if (dffilt['cc2']<0).any():
-        cc2_crop = 'Calibration criteria 2 met'
+        cc2_crop = 'No dominant response criteria met'
     else:
-        cc2_crop = 'Calibration criteria 2 not met'
+        cc2_crop = 'No dominant response criteria not met'
     
     div2.text = '<p>'+dd_crop.value.capitalize()+'</p><p>'+ cc1_crop+'</p><p>'+ cc2_crop+'</p><p>'
 
@@ -55,14 +55,14 @@ data = pd.read_csv('MINT_v6_calibration_output.txt')
 
 # put a disclaimer at the top if everything worked as planned 
 if (data['cc1']<0).any():
-    cc1_str = 'Calibration criteria 1 not met'
+    cc1_str = 'Myopic elasticity calibration criteria not met'
 else:
-    cc1_str = 'Calibration criteria 1 met'
+    cc1_str = 'Myopic elasticity calibration criteria met'
 
 if (data['cc2']>0).any():
-    cc2_str = 'Calibration criteria 2 not met'
+    cc2_str = 'No dominant response criteria not met'
 else:
-    cc2_str = 'Calibration criteria 2 met'
+    cc2_str = 'No dominant response criteria met'
 
 #Take the difference for each crop
 headers = list(data)
@@ -120,14 +120,14 @@ dd_crop.on_change('value', update)
 
 #Make another div for crop cc1/cc2 criteria
 if (dffilt['cc1']>0).any():
-    cc1_crop = 'Calibration criteria 1 met'
+    cc1_crop = 'Myopic elasticity calibration criteria met'
 else:
-    cc1_crop = 'Calibration criteria 1 not met'
+    cc1_crop = 'Myopic elasticity calibration criteria not met'
     
 if (dffilt['cc2']<0).any():
-    cc2_crop = 'Calibration criteria 2 met'
+    cc2_crop = 'No dominant response criteria met'
 else:
-    cc2_crop = 'Calibration criteria 2 not met'
+    cc2_crop = 'No dominant response criteria not met'
     
 div2= Div(text='<p> Maize </p><p>'+
            cc1_crop+'</p><p>'+
