@@ -1,0 +1,3 @@
+#!/bin/bash
+
+bokeh serve  --show calibration/econ_calib_viz.py
