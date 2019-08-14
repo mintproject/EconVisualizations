@@ -15,7 +15,13 @@ from bokeh.models import ColumnDataSource
 from bokeh.models.widgets import DataTable, TableColumn
 from bokeh.layouts import widgetbox, gridplot
 from bokeh.plotting import curdoc
+import configparser
 
+config = configparser.ConfigParser()
+config.read('config.ini')
+
+if 'calibration_file' in config['default']:
+    calibration_file = config['default']['calibration_file']
 
 def update(attr,old,new):
     if dd_crop.value == 'maize':
@@ -51,7 +57,7 @@ def update(attr,old,new):
 
 #Get the calib data 
 global data
-data = pd.read_csv('MINT_v6_calibration_output.txt')
+data = pd.read_csv(calibration_file)
 
 # put a disclaimer at the top if everything worked as planned 
 if (data['cc1']<0).any():
