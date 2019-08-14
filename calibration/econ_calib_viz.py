@@ -20,8 +20,8 @@ import configparser
 config = configparser.ConfigParser()
 config.read('config.ini')
 
-if 'calibration_file' in config['default']:
-    calibration_file = config['default']['calibration_file']
+if 'calibration_file' in config['economic']:
+    calibration_file = config['economic']['calibration_file']
 
 def update(attr,old,new):
     if dd_crop.value == 'maize':
