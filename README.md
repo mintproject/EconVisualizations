@@ -10,3 +10,9 @@ Movies show both styles of visualization.
 ## Calibration
 
 The calibration folder contains the necessary output from the model and the bokeh script to "visualize" relevant information from the calibration. 
+
+## How to run
+
+```bash
+./run
+```
