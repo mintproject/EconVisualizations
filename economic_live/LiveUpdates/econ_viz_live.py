@@ -29,7 +29,7 @@ config.read('config.ini')
 code_path = config['economic_live']['code_path']
 gams_path = config['economic_live']['gams_path']
 simulation_output_file =config['economic_live']['simulation_output_file']
-mint_v6_file = config['economic_live']['mint_v6_file]
+mint_v6_file = config['economic_live']['mint_v6_file']
 price_v6 = config['economic_live']['price_v6']
 productioncost_v6 = config['economic_live']['productioncost_v6']
 simprice_file = config['economic_live']['simprice_file']
