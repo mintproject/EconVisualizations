@@ -91,10 +91,9 @@ def update_data(attr, old, new):
                 p_read[idx]*(1+float(slider_values[slider_values['crop']==item]['p_adj'])/100)])
 
     #Run the econ model
-    #Run the econ model
     wd = os.getcwd()
-    os.chdir("/bokeh/economic/economic_live/LiveUpdates")
-    subprocess.run(["/opt/gams/gams27.3_linux_x64_64_sfx/gams","MINT_v6.gms"])
+    os.chdir(code_path)
+    subprocess.run([gams_path,mint_v6_file])
     os.chdir(wd)
         
     #Get the results
@@ -145,8 +144,8 @@ with open(csv_file2,'w',newline='') as csvfile2:
 #Run the econ model
 #Run the econ model
 wd = os.getcwd()
-os.chdir("/bokeh/economic/economic_live/LiveUpdates")
-subprocess.run(["/opt/gams/gams27.3_linux_x64_64_sfx/gams","MINT_v6.gms"])
+os.chdir(code_path)
+subprocess.run([gams_path,mint_v6_file])
 os.chdir(wd)
 
 # Source data for the bar charts 
@@ -301,32 +300,32 @@ p5 = Div(text="<b>Sorghum:</b>")
 #Text for the instruction box
 p0 = Div(text="Change one parameter at a time for sensitivity analysis")
 
-wb1 = widgetbox(p0,p1,cassava_c1_slider, 
+wb1 = widgetbox(p0,
+                p1, 
+               cassava_c1_slider, 
                cassava_c2_slider, 
-               cassava_p_slider) 
-wb2 = widgetbox(p2,
+               cassava_p_slider,
+               p2,
                groundnuts_c1_slider, 
                groundnuts_c2_slider, 
                groundnuts_p_slider)
-wb3 = widgetbox(p3,
+wb2 = widgetbox(p3,
                maize_c1_slider, 
                maize_c2_slider, 
-               maize_p_slider)
-wb4 = widgetbox(p4,
+               maize_p_slider,
+               p4,
                sesame_c1_slider, 
                sesame_c2_slider, 
                sesame_p_slider)
-wb5 = widgetbox(p5,
-                sorghum_c1_slider, 
+wb3 = widgetbox(p5,
+               sorghum_c1_slider, 
                sorghum_c2_slider, 
                sorghum_p_slider)
 
 layout = gridplot([
-        [wb1, wb2],
-        [wb3,wb5],
-        [plot,plot1],
-        [plot2,plot3],
-        [plot4]
+        [plot,plot1,wb1],
+        [plot2,plot3,wb2],
+        [plot4,wb3]
         ])
 
 curdoc().add_root(layout)
