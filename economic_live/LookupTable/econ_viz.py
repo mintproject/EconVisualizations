@@ -246,32 +246,32 @@ p5 = Div(text="<b>Sorghum:</b>")
 
 p0 = Div(text="Change one parameter at a time for sensitivity analysis")
 
-wb1 = widgetbox(p0,
-                p1, 
-               cassava_c1_slider, 
+wb1 = widgetbox(p0,p1,cassava_c1_slider, 
                cassava_c2_slider, 
-               cassava_p_slider,
-               p2,
+               cassava_p_slider) 
+wb2 = widgetbox(p2,
                groundnuts_c1_slider, 
                groundnuts_c2_slider, 
                groundnuts_p_slider)
-wb2 = widgetbox(p3,
+wb3 = widgetbox(p3,
                maize_c1_slider, 
                maize_c2_slider, 
-               maize_p_slider,
-               p4,
+               maize_p_slider)
+wb4 = widgetbox(p4,
                sesame_c1_slider, 
                sesame_c2_slider, 
                sesame_p_slider)
-wb3 = widgetbox(p5,
-               sorghum_c1_slider, 
+wb5 = widgetbox(p5,
+                sorghum_c1_slider, 
                sorghum_c2_slider, 
                sorghum_p_slider)
 
 layout = gridplot([
-        [plot,plot1,wb1],
-        [plot2,plot3,wb2],
-        [plot4,wb3]
+        [wb1, wb2],
+        [wb3,wb5],
+        [plot,plot1],
+        [plot2,plot3],
+        [plot4]
         ])
 
 curdoc().add_root(layout)
