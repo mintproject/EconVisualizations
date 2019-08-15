@@ -91,8 +91,12 @@ def update_data(attr, old, new):
                 p_read[idx]*(1+float(slider_values[slider_values['crop']==item]['p_adj'])/100)])
 
     #Run the econ model
-    subprocess.run([gams_path,mint_v6_file])
-    
+    #Run the econ model
+    wd = os.getcwd()
+    os.chdir("/bokeh/economic/economic_live/LiveUpdates")
+    subprocess.run(["/opt/gams/gams27.3_linux_x64_64_sfx/gams","MINT_v6.gms"])
+    os.chdir(wd)
+        
     #Get the results
     econ_data = pd.read_csv(simulation_output_file,index_col=False)  
     # Update the data
