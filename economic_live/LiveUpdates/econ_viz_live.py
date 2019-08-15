@@ -141,8 +141,8 @@ with open(csv_file2,'w',newline='') as csvfile2:
 #Run the econ model
 #Run the econ model
 wd = os.getcwd()
-os.chdir(code_path)
-subprocess.run([gams_path,mint_v6_file])
+os.chdir("/bokeh/economic/economic_live/LiveUpdates")
+subprocess.run(["/opt/gams/gams27.3_linux_x64_64_sfx/gams","MINT_v6.gms"])
 os.chdir(wd)
 
 # Source data for the bar charts 
